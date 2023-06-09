@@ -38,11 +38,10 @@
 
                 <li class="nav-header">Akun</li>
                 <li class="nav-item">
-                    <a href="pages/calendar.html" class="nav-link">
+                    <a href="{{ route('profile.show') }}" class="nav-link {{ request()->is('user*')  ? 'active' : ''}}">
                         <i class="nav-icon far fa-user"></i>
                         <p>
                             Profile
-                            <span class="badge badge-info right">2</span>
                         </p>
                     </a>
                 </li>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MonitoringController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,4 +23,7 @@ Route::group([
     'middleware' => ['auth', 'role:admin,user'],
 ], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/monitoring/data',[MonitoringController::class, 'getData'])->name('monitoring.data');
+    Route::get('/monitoring',[MonitoringController::class,'index'])->name('monitoring.index');
 });

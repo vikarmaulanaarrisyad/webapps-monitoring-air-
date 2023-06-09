@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MonitoringController;
+use App\Http\Controllers\UserProfileInformationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,13 @@ Route::group([
     'middleware' => ['auth', 'role:admin,user'],
 ], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/user/profile/password', [UserProfileInformationController::class, 'showPassword'])
+        ->name('profile.show.password');
 
-    Route::get('/monitoring/data',[MonitoringController::class, 'getData'])->name('monitoring.data');
-    Route::get('/monitoring',[MonitoringController::class,'index'])->name('monitoring.index');
+    Route::group([
+        'middleware' => 'role:admin'
+    ], function () {
+        Route::get('/monitoring/data', [MonitoringController::class, 'getData'])->name('monitoring.data');
+        Route::get('/monitoring', [MonitoringController::class, 'index'])->name('monitoring.index');
+    });
 });

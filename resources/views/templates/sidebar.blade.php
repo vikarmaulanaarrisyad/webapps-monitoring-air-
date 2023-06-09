@@ -27,6 +27,7 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-header">Master Data</li>
                 <li class="nav-item">
                     <a href="{{ route('monitoring.index') }}"
                         class="nav-link {{ request()->is('monitoring*') ? 'active' : '' }}">
@@ -40,10 +41,19 @@
                 <li class="nav-header">Akun</li>
                 <li class="nav-item">
                     <a href="{{ route('profile.show') }}"
-                        class="nav-link {{ request()->is('user*') ? 'active' : '' }}">
+                        class="nav-link {{ request()->is('user/profile') ? 'active' : '' }}">
                         <i class="nav-icon far fa-user"></i>
                         <p>
                             Profile
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('profile.show.password') }}"
+                        class="nav-link {{ request()->is('user/profile/password') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-unlock"></i>
+                        <p>
+                            Ubah Password
                         </p>
                     </a>
                 </li>
@@ -53,7 +63,6 @@
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
                             Logout
-                            {{-- <span class="badge badge-info right">2</span> --}}
                         </p>
                     </a>
                     <form action="{{ route('logout') }}" method="post" id="form-logout">

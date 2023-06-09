@@ -47,8 +47,6 @@
                             <li class="nav-item"><a class="nav-link active" href="#settings"
                                     data-toggle="tab">Pengaturan</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link {{ request() }}" href="#settings"
-                                    data-toggle="tab">Pengaturan</a></li>
                         </ul>
                     </div>
                     <div class="card-body">

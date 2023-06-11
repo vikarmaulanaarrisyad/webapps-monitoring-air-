@@ -20,7 +20,8 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
                 <li class="nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link {{ request()->is('dashboard*') ? 'active' : '' }}">
+                    <a href="{{ route('dashboard') }}"
+                        class="nav-link {{ request()->is('dashboard*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -34,6 +35,16 @@
                         <i class="nav-icon far fa-calendar-alt"></i>
                         <p>
                             Monitoring
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-header">Report</li>
+                <li class="nav-item">
+                    <a href="{{ route('report.index') }}"
+                        class="nav-link {{ request()->is('report*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-file-pdf"></i>
+                        <p>
+                            Laporan
                         </p>
                     </a>
                 </li>

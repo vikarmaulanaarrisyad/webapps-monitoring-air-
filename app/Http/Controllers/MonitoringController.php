@@ -14,7 +14,7 @@ class MonitoringController extends Controller
 
     public function getData(Request $request)
     {
-        $distance = Sensor::latest()->pluck('distance','status')->first();
+        $distance = Sensor::orderBy('id', 'DESC')->first();
 
         return response()->json(['data' => $distance]);
     }

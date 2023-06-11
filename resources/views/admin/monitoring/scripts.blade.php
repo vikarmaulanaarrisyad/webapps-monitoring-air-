@@ -9,16 +9,16 @@
             barChart(); // Inisialisasi grafik saat dokumen siap
             fetchAndUpdateData();
             // Memperbarui data setiap 3 detik // Memperbarui data pertama kali
-            setInterval(fetchAndUpdateData, 3000);
+            setInterval(fetchAndUpdateData, 2000);
         });
 
         function updateBarChart(data) {
             var barChart = Chart.instances[0];
-            barChart.data.datasets[0].data = data;
+            barChart.data.datasets[0].data = [data.distance];
 
             var backgroundColor;
             if (data.status == "Aman") {
-                backgroundColor = 'blue';
+                backgroundColor = 'green';
             } else if (data.status == 'Siaga') {
                 backgroundColor = 'yellow';
             } else {
@@ -35,7 +35,7 @@
                 url: "{{ route('monitoring.data') }}",
                 dataType: "json",
                 success: function(response) {
-                    updateBarChart([response.data]);
+                    updateBarChart(response.data);
                 },
                 error: function(xhr, status, error) {
                     console.log(error);

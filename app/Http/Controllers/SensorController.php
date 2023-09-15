@@ -62,4 +62,11 @@ class SensorController extends Controller
     {
         //
     }
+
+    public function getSingleSensor()
+    {
+        $sensor = Sensor::latest()->first();
+
+        return $sensor;
+    }
 }

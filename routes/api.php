@@ -20,4 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::post('/kirim_data',[SensorController::class,'kirimData']);
+Route::post('/kirim_data', [SensorController::class, 'kirimData']);
+
+Route::get('/get-sensor', [SensorController::class, 'getSingleSensor'])->name('getSingleSensor');
+Route::post('/send-sensor', [SensorController::class, 'sensorStore'])->name('sensor');

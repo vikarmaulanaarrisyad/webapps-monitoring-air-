@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MonitoringController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserProfileInformationController;
 use Illuminate\Support\Facades\Route;
@@ -40,3 +41,6 @@ Route::group([
         Route::get('/report/excel/{start}/{end}', [ReportController::class, 'exportExcel'])->name('report.export_excel');
     });
 });
+
+Route::patch('/fcm-token', [NotificationController::class, 'updateToken'])->name('fcmToken');
+Route::post('/send-notification', [NotificationController::class, 'notification'])->name('notification');

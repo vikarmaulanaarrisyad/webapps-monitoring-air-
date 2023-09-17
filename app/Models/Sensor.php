@@ -29,4 +29,11 @@ class Sensor extends Model
 
         return $color;
     }
+
+    public function ScopedataPerMinggu()
+    {
+        return $this->selectRaw('YEAR(created_at) as tahun, WEEK(created_at) as minggu, COUNT(*) as jumlah_data')
+            ->groupBy('tahun', 'minggu')
+            ->get();
+    }
 }

@@ -49,7 +49,7 @@ if (!function_exists('tanggal_indonesia')) {
     }
 }
 
-if (!function_exists('format_bulan')) {
+if (!function_exists('format_hari')) {
     function format_bulan($bulan)
     {
         $nama_bulan = array(
@@ -60,6 +60,24 @@ if (!function_exists('format_bulan')) {
         return $nama_bulan[(int) $bulan];
     }
 }
+
+if (!function_exists('format_hari')) {
+    function format_hari($hari)
+    {
+        $daftar_hari = [
+            'Monday' => 'Senin',
+            'Tuesday' => 'Selasa',
+            'Wednesday' => 'Rabu',
+            'Thursday' => 'Kamis',
+            'Friday' => 'Jumat',
+            'Saturday   ' => 'Sabtu',
+            'Sunday' => 'Minggu'
+        ];
+
+        return $daftar_hari[$hari];
+    }
+}
+
 
 if (!function_exists('sembunyikan_text')) {
     function sembunyikan_text($words, $offset = 0)

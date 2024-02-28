@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MonitoringController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\TelegramNotificationController;
 use App\Http\Controllers\UserProfileInformationController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('auth.login');
 });
+
+Route::get('/message', [TelegramNotificationController::class, 'message'])
+    ->name('send-notification');
+Route::post('/sendMessage/{id}', [TelegramNotificationController::class, 'sendMessage'])
+    ->name('sendMessage');
 
 Route::group([
     'middleware' => ['auth', 'role:admin,user'],

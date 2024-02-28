@@ -11,9 +11,11 @@ class DashboardController extends Controller
     public function index()
     {
         if (auth()->user()->hasRole('admin')) {
-            $sensor = Sensor::orderBy('created_at', 'desc')->take(7)->get();
+            $sensors = Sensor::orderBy('created_at', 'desc')->take(7)->get();
+            $hari = [];
+            $data = [];
 
-            foreach ($sensor as $item) {
+            foreach ($sensors as $item) {
                 $hari[] = format_hari($item->created_at->format('l')); // 'l' menghasilkan nama hari (e.g., "Monday")
                 $data[] = $item->distance;
             }

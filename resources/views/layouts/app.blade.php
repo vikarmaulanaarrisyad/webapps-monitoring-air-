@@ -201,6 +201,8 @@
                     let nilai = response.distance;
                     let status = response.status;
 
+                    let id = 5793671058;
+
                     console.log('Fetched nilai:', nilai);
                     console.log('Fetched status:', status);
 
@@ -214,6 +216,13 @@
                         $.ajax({
                             type: "POST",
                             url: '{{ route('notification') }}',
+                            dataType: "json",
+
+                        });
+
+                        $.ajax({
+                            type: "POST",
+                            url: '{{ route('sendMessage', ['id' => '5793671058']) }}',
                             dataType: "json",
 
                         });

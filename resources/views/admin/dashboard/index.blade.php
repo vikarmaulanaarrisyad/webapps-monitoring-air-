@@ -59,4 +59,4 @@
     </div>
 @endsection
 
-@include('admin.dashboard.scripts');
+@include('admin.dashboard.scripts')

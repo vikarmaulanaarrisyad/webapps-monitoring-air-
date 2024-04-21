@@ -49,6 +49,33 @@
                     </a>
                 </li>
 
+                <li class="nav-item {{ request()->is('*') ? 'menu-is-opening menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ request()->is('ketinggianair*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-list-alt"></i>
+                        <p>
+                            Data Ketinggian Air
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" style="display: block;">
+                        <li class="nav-item">
+                            <a href="{{ route('perhari.index') }}"
+                                class="nav-link {{ request()->is('ketinggianair/perhari*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Perhari</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('perbulan.index') }}"
+                                class="nav-link {{ request()->is('ketinggianair/perbulan*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Perbulan</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
                 <li class="nav-header">Akun</li>
                 <li class="nav-item">
                     <a href="{{ route('profile.show') }}"

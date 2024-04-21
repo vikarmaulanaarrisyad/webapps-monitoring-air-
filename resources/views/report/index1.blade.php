@@ -18,6 +18,7 @@
                             class="btn btn-danger"><i class="fas fa-file-pdf"></i> Export PDF</a>
                     </div>
                 </x-slot>
+
                 <x-table>
                     <x-slot name="thead">
                         <th width="5%">No</th>

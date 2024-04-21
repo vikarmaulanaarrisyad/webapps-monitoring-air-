@@ -1,23 +1,16 @@
 @extends('layouts.app')
 
-@section('title', 'Laporan Ketinggian Air ' . tanggal_indonesia($start) . ' s/d ' . tanggal_indonesia($end))
+@section('title', 'Data Ketinggian Air Pada ' . tanggal_indonesia($day, true))
 @section('breadcrumb')
     @parent
-    <li class="breadcrumb-item active">Laporan</li>
+    <li class="breadcrumb-item active">{{ tanggal_indonesia($day, true) }}</li>
 @endsection
 
 @section('content')
     <div class="row">
         <div class="col-lg-12">
             <x-card>
-                <x-slot name="header">
-                    <div class="btn-group">
-                        <button data-toggle="modal" data-target="#modal-form" class="btn btn-primary"><i
-                                class="fas fa-pencil-alt"></i> Ubah Periode</button>
-                        <a target="_blank" href="{{ route('report.export_pdf', compact('start', 'end')) }}"
-                            class="btn btn-danger"><i class="fas fa-file-pdf"></i> Export PDF</a>
-                    </div>
-                </x-slot>
+
                 <x-table>
                     <x-slot name="thead">
                         <th width="5%">No</th>
@@ -29,8 +22,6 @@
             </x-card>
         </div>
     </div>
-
-    @include('report.form')
 @endsection
 
 @includeIf('include.datatable')
@@ -45,7 +36,7 @@
             processing: true,
             autoWidth: false,
             ajax: {
-                url: '{{ route('report.data', compact('start', 'end')) }}'
+                url: '{{ route('perhari.data', compact('day')) }}'
             },
             columns: [{
                     data: 'DT_RowIndex',

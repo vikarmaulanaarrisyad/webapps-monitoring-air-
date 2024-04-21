@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KetinggianAirController;
 use App\Http\Controllers\MonitoringController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ReportController;
@@ -40,6 +41,12 @@ Route::group([
     ], function () {
         Route::get('/monitoring/data', [MonitoringController::class, 'getData'])->name('monitoring.data');
         Route::get('/monitoring', [MonitoringController::class, 'index'])->name('monitoring.index');
+
+        Route::get('/ketinggianair/perhari', [KetinggianAirController::class, 'perhariIndex'])->name('perhari.index');
+        Route::get('/ketinggianair/perhari/data/{day}', [KetinggianAirController::class, 'perhariData'])->name('perhari.data');
+
+        Route::get('/ketinggianair/perbulan', [KetinggianAirController::class, 'perbulanIndex'])->name('perbulan.index');
+        Route::get('/ketinggianair/perbulan/data', [KetinggianAirController::class, 'perbulanData'])->name('perbulan.data');
 
         Route::get('/report', [ReportController::class, 'index'])->name('report.index');
         Route::get('/report/data/{start}/{end}', [ReportController::class, 'data'])->name('report.data');

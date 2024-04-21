@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Sensor;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 
 class KetinggianAirController extends Controller
 {
@@ -19,7 +20,7 @@ class KetinggianAirController extends Controller
     {
         $data = [];
 
-        $sensors = Sensor::orderBy('created_at', 'desc')->whereDate('created_at', $day)->get();
+        $sensors = Sensor::whereDate('created_at', $day)->get();
 
         if ($sensors->isEmpty()) {
             $data[] = [
@@ -41,12 +42,26 @@ class KetinggianAirController extends Controller
         return $data;
     }
 
-    public function perhariData($day)
+    public function perhariData(Request $request)
     {
 
-        $data = $this->getDataPerhari($day);
+        $day = Carbon::now()->format('Y-m-d');
+
+        $data = Sensor::whereDate('created_at', $day)->get();
 
         return datatables($data)
+            ->addIndexColumn()
+            ->editColumn('tanggal', function ($query) {
+                return tanggal_indonesia($query->created_at, true, true);
+            })
+            ->editColumn('ketinggian', function ($query) {
+                return $query->distance . ' cm';
+            })
+            ->editColumn('status', function ($query) {
+
+                return
+                    '<span class=" badge badge-' . $query->statusColor() . ' ">' . $query->status . '</span >';
+            })
             ->escapeColumns([])
             ->make(true);
     }
@@ -73,6 +88,10 @@ class KetinggianAirController extends Controller
             })
             ->editColumn('ketinggian', function ($query) {
                 return $query->distance . ' cm';
+            })
+            ->editColumn('status', function ($query) {
+                return
+                    '<span class=" badge badge-' . $query->statusColor() . ' ">' . $query->status . '</span >';
             })
             ->escapeColumns([])
             ->make(true);

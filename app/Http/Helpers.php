@@ -50,7 +50,7 @@ if (!function_exists('format_uang')) {
 // }
 
 if (!function_exists('tanggal_indonesia')) {
-    function tanggal_indonesia($tgl, $tampil_hari = false, $hanya_nama_bulan = false)
+    function tanggal_indonesia($tgl, $tampil_hari = false, $hanya_nama_bulan = false, $tammpil_tahun = true)
     {
         $nama_hari  = array(
             'Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum\'at', 'Sabtu'
@@ -72,9 +72,9 @@ if (!function_exists('tanggal_indonesia')) {
         }
 
         if ($hanya_nama_bulan) {
-            $text .= $bulan;
-        } else {
             $text .= "$bulan $tahun";
+        } else if ($tammpil_tahun) {
+            $text .= "$tanggal $bulan $tahun";
         }
 
         return $text;

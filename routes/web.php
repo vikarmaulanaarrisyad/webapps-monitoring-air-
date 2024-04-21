@@ -43,7 +43,7 @@ Route::group([
         Route::get('/monitoring', [MonitoringController::class, 'index'])->name('monitoring.index');
 
         Route::get('/ketinggianair/perhari', [KetinggianAirController::class, 'perhariIndex'])->name('perhari.index');
-        Route::get('/ketinggianair/perhari/data/{day}', [KetinggianAirController::class, 'perhariData'])->name('perhari.data');
+        Route::get('/ketinggianair/perhari/data', [KetinggianAirController::class, 'perhariData'])->name('perhari.data');
 
         Route::get('/ketinggianair/perbulan', [KetinggianAirController::class, 'perbulanIndex'])->name('perbulan.index');
         Route::get('/ketinggianair/perbulan/data', [KetinggianAirController::class, 'perbulanData'])->name('perbulan.data');

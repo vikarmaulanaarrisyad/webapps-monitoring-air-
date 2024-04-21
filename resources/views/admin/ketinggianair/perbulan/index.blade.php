@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Data Ketinggian Air Pada Bulan ' . tanggal_indonesia($month))
+@section('title', 'Data Ketinggian Air ')
 @section('breadcrumb')
     @parent
-    <li class="breadcrumb-item active">{{ tanggal_indonesia($month) }}</li>
+    <li class="breadcrumb-item active">Filter perbulan</li>
 @endsection
 
 @section('content')
@@ -50,7 +50,7 @@
                 <x-table>
                     <x-slot name="thead">
                         <th width="5%">No</th>
-                        <th>Tanggal</th>
+                        <th>Bulan</th>
                         <th width="25%" style="text-align: left !important;">Ketinggian Air</th>
                         <th width="25%" style="text-align: left !important;">Status</th>
                     </x-slot>

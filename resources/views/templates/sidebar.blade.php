@@ -49,7 +49,7 @@
                     </a>
                 </li>
 
-                <li class="nav-item {{ request()->is('*') ? 'menu-is-opening menu-open' : '' }}">
+                <li class="nav-item {{ request()->is('ketinggianair*') ? 'menu-is-opening menu-open' : '' }}">
                     <a href="#" class="nav-link {{ request()->is('ketinggianair*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-list-alt"></i>
                         <p>
@@ -57,7 +57,8 @@
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview" style="display: block;">
+                    <ul class="nav nav-treeview"
+                        style="{{ request()->is('ketinggianair*') ? 'display: block' : 'display: none' }}">
                         <li class="nav-item">
                             <a href="{{ route('perhari.index') }}"
                                 class="nav-link {{ request()->is('ketinggianair/perhari*') ? 'active' : '' }}">

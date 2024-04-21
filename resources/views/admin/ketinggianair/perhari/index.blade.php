@@ -36,7 +36,7 @@
             processing: true,
             autoWidth: false,
             ajax: {
-                url: '{{ route('perhari.data', compact('day')) }}'
+                url: '{{ route('perhari.data') }}'
             },
             columns: [{
                     data: 'DT_RowIndex',

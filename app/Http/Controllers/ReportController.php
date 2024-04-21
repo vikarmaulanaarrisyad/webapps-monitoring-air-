@@ -26,8 +26,8 @@ class ReportController extends Controller
         $data = [];
         $i = 1;
 
-        // $sensors = Sensor::whereBetween('created_at', [$start, $end])->get();
-        $sensors = Sensor::whereDate('created_at', [$start, $end])->get();
+        $sensors = Sensor::whereBetween('created_at', [$start, $end])->get();
+        // $sensors = Sensor::whereDate('created_at', [$start, $end])->get();
 
         if ($sensors->isEmpty()) {
             $data[] = [
